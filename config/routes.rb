@@ -1,7 +1,7 @@
 ChiText::Application.routes.draw do
   get "messages", to: 'messages#index'
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api  do
     namespace :v1 do
       post "messages/receive", to: 'messages#receive'
     end
