@@ -19,18 +19,18 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
     welcome: |
-        Hi! Welcome to Chi-Text. 
-        Text "help" for a list of commands. 
-        Digita "español" para cambiar el idioma.
+        Hola! Bienvenido a Chi-Text. 
+        Digita "ayuda" para para una lista de comandos. 
+        Text “English” to switch the language.
     features: |
         Text "plow" to see if your street's been plowed, 
         "flu" to find a free flu shot, 
         "library", "police" or "fire" 
         to find a library, police or fire station.
-    differentAddress : Text "other" to use a different address.
-    directions : Text "directions" for directions.
+    differentAddress : digita "otra" para usar una dirección diferente.
+    directions : digita "directions" para direcciónes.
     noPlowing : The city of Chicago snowplows are not plowing today.
     plowing : The City of Chicago snowplows are plowing today. 
     plowAddressPrompt:  |
@@ -56,7 +56,7 @@ en:
     dayOfWeekSaturday : Saturday
     dayOfWeekSunday : Sunday
     inCaseOfEmergency: |
-        If this is an emergency, please dial 911.
+        Si hay una emergencia, llame al 911.
     policeAddressPrompt : Text your address to find the closest police station.
     policeNearSavedAddress : |
         to {{savedAddress}}
@@ -69,11 +69,11 @@ en:
         {{directions}} 
     fireAddressPrompt : Text your address to find the closest fire station.
     fireNearSavedAddress : |
-        to {{savedAddress}} 
+        a {{savedAddress}} 
     fireData : |
-        The closest fire station {{fireNearSavedAddress}} 
-        is the Engine {{engineNumber}} Fire Station 
-        at {{fireAddress}}.
+        La estación‎ de bomberos más cercana {{fireNearSavedAddress}} 
+        es el estación‎ del camión {{engineNumber}} 
+        a {{fireAddress}}.
         {{inCaseOfEmergency}}
         {{differentAddress}} 
         {{directions}} 
