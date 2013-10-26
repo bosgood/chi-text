@@ -64,6 +64,8 @@ module LanguageHelper
     h['language'] = t_language('en')
     h['espanol'] = t_language('es')
     h['español'] = t_language('es')
+    h['directions'] = t_language('en')
+    h['direcciónes'] = t_language('es')
 
     h[key]
   end
