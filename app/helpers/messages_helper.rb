@@ -91,8 +91,13 @@ module MessagesHelper
     )
   end
 
-  def get_reply_for_directions(msg, from)
-    match = msg.body.match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
+  def get_reply_for_directions(msg)
+    require 'pry'; binding.pry
+    match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
+    if match.nil?
+      return "Couldn't find directions, sorry!"
+    end
+
     ds = DirectionsService.new
     ds.get_step_by_step_directions(match[:start], match[:end]).join(' * ')
   end
