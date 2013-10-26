@@ -6,11 +6,11 @@
 {
 
 font-family: 'Gotham Black';
-    src: url('/fonts/Gotham-Black.eot');
-    src: url('/fonts/Gotham-Black.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/Gotham-Black.woff') format('woff'),
-         url('/fonts/Gotham-Black.ttf') format('truetype'),
-         url('/fonts/Gotham-Black.svg#proxima_nova_rgregular') format('svg');
+    src: font-url('/fonts/Gotham-Black.eot');
+    src: font-url('/fonts/Gotham-Black.eot?#iefix') format('embedded-opentype'),
+         font-url('/fonts/Gotham-Black.woff') format('woff'),
+         font-url('/fonts/Gotham-Black.ttf') format('truetype'),
+         font-url('/fonts/Gotham-Black.svg#proxima_nova_rgregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -18,11 +18,11 @@ font-family: 'Gotham Black';
 @font-face
 {
     font-family: 'Gotham Medium';
-    src: url('/fonts/Gotham-Medium.eot');
-    src: url('/fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/Gotham-Medium.woff') format('woff'),
-         url('/fonts/Gotham-Medium.ttf') format('truetype'),
-         url('/fonts/Gotham-Medium.svg#proxima_nova_rgregular') format('svg');
+    src: font-url('/fonts/Gotham-Medium.eot');
+    src: font-url('/fonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),
+         font-url('/fonts/Gotham-Medium.woff') format('woff'),
+         font-url('/fonts/Gotham-Medium.ttf') format('truetype'),
+         font-url('/fonts/Gotham-Medium.svg#proxima_nova_rgregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
