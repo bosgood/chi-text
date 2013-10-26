@@ -10,10 +10,10 @@ gem 'figaro'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-debugger'
+  gem 'sqlite3'
 end
 
 # # Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 
 gem 'pg'
 
