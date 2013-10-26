@@ -25,10 +25,9 @@ es:
         Digita "ayuda" para para una lista de comandos.
         Text “English” to switch the language.
     features: |
-        Text "plow" to see if your street's been plowed,
-        "flu" to find a free flu shot,
-        "library", "police" or "fire"
-        to find a library, police or fire station.
+        Digita  "gripe" para conseguir una vacuna gratis. 
+        Digita "biblioteca", "policía" o "bomberos"
+        para encontrar una biblioteca o estación‎ de policía o bomberos.
     differentAddress : digita "otra" para usar una dirección diferente.
     directions : digita "directions" para direcciónes.
     noPlowing : The city of Chicago snowplows are not plowing today.
@@ -72,15 +71,17 @@ es:
         {{inCaseOfEmergency}}
         {{differentAddress}}
         {{directions}}
-    libraryAddressPrompt: Text your address to find the closest library.
+    libraryAddressPrompt: Digita tu dirección para encontrar la biblioteca más cercana.
     libraryNearSavedAddress : |
         to {{savedAddress}}
     libraryData: |
-        The closest library {{libraryNearSavedAddress}}
-        is {{libraryName}} {{libaryAddress}}.
+        La biblioteca más cercana {{libraryNearSavedAddress}}
+        es {{libraryName}} {{libaryAddress}}.
         {{differentAddress}}
         {{directions}}
-    invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
-    otherError: There was an error on our side. Sorry about that. Try again?
-    unrecognizedInput: |
-        We didn't recognize that input.
+    unrecognizedInput: No reconocimos esa entrada.
+    invalidAddress: | 
+        No se encontró esa dirección. Por favor, 
+        inténta de nuevo con una dirección 
+        válida en la Ciudad de Chicago.
+    otherError: Ocurrió un error de nuestra parte. Lamentamos eso. Inténtalo de nuevo?
