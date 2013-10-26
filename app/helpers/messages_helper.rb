@@ -85,37 +85,49 @@ module MessagesHelper
   # Message handlers are defined here as "get_reply_for_#{keyword}"
   #
 
-  def closest_location(location_type, location)
+  def closest_location(location_type, msg)
+    loc = msg.location
+    if loc.nil?
+      return nil
+    end
     ClosestResourceService.closest_of_type(
-      location_type, location[0], location[1]
+      location_type, loc[0], loc[1]
     )
   end
 
   def get_reply_for_directions(msg)
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
-      return "Couldn't find directions, sorry!"
+      return t("Couldn't find directions, sorry!", {})
     end
 
     ds = DirectionsService.new
     ds.get_step_by_step_directions(match[:start], match[:end]).join(' * ')
   end
 
-  def get_reply_for_police(msg)
-    loc = msg.location
-    if loc.nil?
+  def get_reply_for_flu(msg)
+    closest_loc = closest_location(:flu_clinic, msg)
+    if closest_loc.nil?
       return nil
+    else
+      return t("Closest flu clinic: #{closest_loc.address}", {})
     end
+  end
 
-    closest_loc = closest_location(:police_station, loc)
+  def get_reply_for_police(msg)
+    closest_loc = closest_location(:police_station, msg)
     if closest_loc.nil?
       return nil
     else
       # TODO: need localization here
       # TODO: need phone data
       # phone = closest_loc.phone
-      return "Closest police station: #{closest_loc.address}"
+      return t("Closest police station: #{closest_loc.address}", {})
     end
+  end
+
+  def t(key, params)
+    key
   end
 
   # def get_reply_for_plow(msg)

@@ -9,7 +9,7 @@ namespace :db do
     xml = Net::HTTP.get(URI.parse(args.csv_url))
     doc = Nokogiri::XML(xml)
     rows = doc.css('row > row')
-    
+
     rows.each do |row|
       num_records = num_records + 1
       loc = nil
@@ -22,6 +22,8 @@ namespace :db do
         loc = process_city_office(row)
       when 'library'
         loc = process_library(row)
+      when 'flu_clinic'
+        loc = process_flu_clinic(row)
       end
 
       unless loc.nil?
@@ -36,6 +38,11 @@ namespace :db do
 
     puts "processed #{num_records} records."
   end
+end
+
+def process_flu_clinic(row)
+  row = process_any(row)
+  row
 end
 
 # <name>E119</name>
