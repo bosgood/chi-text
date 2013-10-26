@@ -21,18 +21,18 @@
 
 es:
     welcome: |
-        Hola! Bienvenido a Chi-Text. 
-        Digita "ayuda" para para una lista de comandos. 
+        Hola! Bienvenido a Chi-Text.
+        Digita "ayuda" para para una lista de comandos.
         Text “English” to switch the language.
     features: |
-        Text "plow" to see if your street's been plowed, 
-        "flu" to find a free flu shot, 
-        "library", "police" or "fire" 
+        Text "plow" to see if your street's been plowed,
+        "flu" to find a free flu shot,
+        "library", "police" or "fire"
         to find a library, police or fire station.
     differentAddress : digita "otra" para usar una dirección diferente.
     directions : digita "directions" para direcciónes.
     noPlowing : The city of Chicago snowplows are not plowing today.
-    plowing : The City of Chicago snowplows are plowing today. 
+    plowing : The City of Chicago snowplows are plowing today.
     plowAddressPrompt:  |
         {{plowingOrNot}} Text your address to find out it's been plowed yet.
     plowHas : has
@@ -43,11 +43,11 @@ es:
     fluNearSavedAddress : |
         near {{saved}}
     fluData : |
-        You can get a free flu shot {{nearSavedAddress}} 
-        on {{dayOfWeek}} at {{locationName}} 
-        from {{timePeriod}} at {{fluAddress}}. 
-        {{differentAddress}} 
-        {{directions}} 
+        You can get a free flu shot {{nearSavedAddress}}
+        on {{dayOfWeek}} at {{locationName}}
+        from {{timePeriod}} at {{fluAddress}}.
+        {{differentAddress}}
+        {{directions}}
     dayOfWeekMonday : Monday
     dayOfWeekTuesday : Tuesday
     dayOfWeekWednesday : Wednesday
@@ -61,30 +61,30 @@ es:
     policeNearSavedAddress : |
         to {{savedAddress}}
     policeData: |
-    	Su estación‎ de policía más cercana {{policeNearSavedAddress}}
-    	es el comisaría del distrito {{districtNumber}} 
-    	a {{stationAddress}}. 
-    	{{inCaseOfEmergency}}
-    	{{differentAddress}} 
-        {{directions}}
+    	Su estación‎ de policía más cercana está a {{stationAddress}}.
+# es el comisaría del distrito {{districtNumber}}
+# a {{stationAddress}}.
+# {{inCaseOfEmergency}}
+# {{differentAddress}}
+# {{directions}}
     fireAddressPrompt : Text your address to find the closest fire station.
     fireNearSavedAddress : |
-        a {{savedAddress}} 
+        a {{savedAddress}}
     fireData : |
-        La estación‎ de bomberos más cercana {{fireNearSavedAddress}} 
-        es el estación‎ del camión {{engineNumber}} 
+        La estación‎ de bomberos más cercana {{fireNearSavedAddress}}
+        es el estación‎ del camión {{engineNumber}}
         a {{fireAddress}}.
         {{inCaseOfEmergency}}
-        {{differentAddress}} 
-        {{directions}} 
+        {{differentAddress}}
+        {{directions}}
     libraryAddressPrompt: Text your address to find the closest library.
     libraryNearSavedAddress : |
-        to {{savedAddress}} 
+        to {{savedAddress}}
     libraryData: |
-        The closest library {{libraryNearSavedAddress}} 
+        The closest library {{libraryNearSavedAddress}}
         is {{libraryName}} {{libaryAddress}}.
-        {{differentAddress}} 
-        {{directions}} 
+        {{differentAddress}}
+        {{directions}}
     invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
     otherError: There was an error on our side. Sorry about that. Try again?
 
