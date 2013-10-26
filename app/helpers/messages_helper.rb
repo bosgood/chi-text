@@ -84,9 +84,9 @@ module MessagesHelper
   # Message handlers are defined here as "get_reply_for_#{keyword}"
   #
 
-  def closest_location(body, location_type)
+  def closest_location(location_type, location)
     ClosestResourceService.closest_of_type(
-      location_type,
+      location_type, location
     )
   end
 
@@ -97,9 +97,12 @@ module MessagesHelper
   end
 
   def get_reply_for_police(msg)
-    closest_location(
-      :police_station, msg.from, msg.rest
-    )
+    loc = msg.location
+    if loc.nil?
+      return nil
+    end
+
+    closest_location(:police_station, loc)
   end
 
   # def get_reply_for_plow(msg)
