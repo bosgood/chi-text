@@ -12,7 +12,8 @@ namespace :db do
         :state => state,
         :zip => zip,
         :website => website,
-        :location => location
+        :location => location,
+        :location_type => args.location_type
       )
       loc.calculate_lat_lon_from_location
       loc.save
