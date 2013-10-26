@@ -36,8 +36,9 @@ module MessagesHelper
   def get_reply_for_directions(body)
     match = body.match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
     ds = DirectionsService.new
-    ds.get_step_by_step_directions(match[:start], match[:end]).join('*')
+    ds.get_step_by_step_directions(match[:start], match[:end]).join(' * ')
   end
+
 
   def get_reply_for_plow
   end
