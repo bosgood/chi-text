@@ -6,10 +6,13 @@ class DirectionsService
     :alternative => :true,
     :sensor => :false,
     :mode => :driving,
+    :region => :us
   }
+
 
   def initialize(options = {})
     @options = @@default_options.merge options
+    @sanitizer = HTML::FullSanitizer.new
   end
 
   def language
@@ -28,16 +31,27 @@ class DirectionsService
     @options[:mode] = mode
   end
   
-  def directions_to(origin, destination)
+  def get_directions(origin, destination)
     directions = GoogleDirections.new(origin, destination, @options)
     directions
   end
 
-  def self.test
-    ds = DirectionsService.new
-    ds.directions_to(
+  def get_step_by_step_directions(origin, destination)
+    directions = get_directions(origin, destination)
+    directions_xml = directions.doc
+    instructions = directions_xml.css('step html_instructions').map do |instr|
+      @sanitizer.sanitize(CGI::unescapeHTML(instr.children[0].to_s))
+    end
+    instructions
+  end
+
+  def self.test(options = {})
+    ds = DirectionsService.new(options)
+    directions = ds.get_step_by_step_directions(
       '300 W Adams St Chicago, IL 60606',
       'W Merchandise Mart Plaza, Chicago IL 60654'
     )
+    turn_by_turn = directions.join('. ')
+    puts turn_by_turn
   end
 end
