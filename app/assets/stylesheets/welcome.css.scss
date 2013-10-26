@@ -75,14 +75,16 @@ h2 span {
 .column-container > div {
     width: 210px;
     display: inline-block;
-    background: #d4eefb;
+    background: #004C92;
     margin: 10px;
-    color: #047ac4;
+    color: #429bd3;
     vertical-align: top;
     padding:10px;
     text-align:justify;
 }
-
+.column-container > div.commands {
+    color: #54beec
+}
 .column-container h3 {
     text-align:center;
 }
@@ -99,6 +101,8 @@ button, .big {
 button {
     background: #ec2634;
     color: #fff;
+    text-transform: uppercase;
+    padding: 10px 20px;
 }
 
 .big {
