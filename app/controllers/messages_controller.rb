@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+  include MessagesHelper
   
   def index
+    binding.pry
     return nil if params[:Body].nil? or params[:From].nil?
     keyword = params[:Body].split(' ').first
     if keyword == 'directions'
@@ -13,6 +15,7 @@ class MessagesController < ApplicationController
   def send_message(body)
     MessageService.send_message(params[:From], body)
   end
+
 end
 
 
