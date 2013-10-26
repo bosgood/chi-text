@@ -1,0 +1,1 @@
+SH = SendHub.new(ENV['SEND_HUB_API_KEY'], ENV['SEND_HUB_NUMBER'])

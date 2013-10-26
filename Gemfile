@@ -4,6 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'twilio-ruby'
+gem 'ruby-sendhub'
+gem 'figaro'
+
+group :development, :test do
+  gem 'pry-rails'
+end
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
