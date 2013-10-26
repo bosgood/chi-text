@@ -108,7 +108,7 @@ module MessagesHelper
   def get_reply_for_directions(msg)
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
-      return t("Couldn't find directions, sorry!", {})
+      return t(msg.language, "Couldn't find directions, sorry!", {})
     end
 
     ds = DirectionsService.new
@@ -120,7 +120,16 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t("Closest flu clinic: #{closest_loc.address}", {})
+      return t(msg.language, "Closest flu clinic: #{closest_loc.address}", {})
+    end
+  end
+
+  def get_reply_for_fire(msg)
+    closest_loc = closest_location(:fire_station, msg)
+    if closest_loc.nil?
+      return nil
+    else
+      return t(msg.language, "Closest fire station: #{closest_loc.address}", {})
     end
   end
 
@@ -129,10 +138,10 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      # TODO: need localization here
       # TODO: need phone data
       # phone = closest_loc.phone
-      return t("Closest police station: #{closest_loc.address}", {})
+      require 'pry'; binding.pry
+      return t(msg.language, "policeData", { stationAddress: closest_loc.address })
     end
   end
 
@@ -147,7 +156,8 @@ module MessagesHelper
     "We did not recognize that input please try again"
   end
 
-  def t(key, params)
+  def t(lang, key, params)
+    I18n.locale = lang
     Mustache.render(I18n.t(key), params)
   end
 
