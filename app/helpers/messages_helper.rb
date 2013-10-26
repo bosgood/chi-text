@@ -107,7 +107,10 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return closest_loc.address
+      # TODO: need localization here
+      # TODO: need phone data
+      # phone = closest_loc.phone
+      return "Closest police station: #{closest_loc.address}"
     end
   end
 
