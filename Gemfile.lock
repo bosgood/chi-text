@@ -161,6 +161,7 @@ DEPENDENCIES
   google_directions
   jbuilder (~> 1.2)
   jquery-rails
+  nokogiri
   pg
   pry-debugger
   pry-rails
