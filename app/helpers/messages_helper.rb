@@ -1,5 +1,6 @@
 module MessagesHelper
   class Message
+    include LanguageHelper
     def initialize(body, from)
       @body = body
       @params = get_message_params(body)
@@ -8,6 +9,10 @@ module MessagesHelper
 
     def body
       @body
+    end
+
+    def language
+      @params[:language]
     end
 
     def keyword
@@ -42,17 +47,22 @@ module MessagesHelper
       return subscriber.address
     end
 
+    def get_lang_pair(raw_keyword)
+      t_(raw_keyword)
+    end
+
     # Parses a text message to get a keyword and "rest"
     def get_message_params(body)
       delim = ' '
       tokens = body.split(delim)
-      keyword = tokens.first.downcase
+      lang_pair = get_lang_pair(tokens.first.downcase)
+      keyword = lang_pair[:operation]
       tokens = tokens[1..-1]
-      # TODO translation here, turn into command keyword
       return {
         :keyword => keyword,
         :rest => tokens.join(delim),
-        :tokens => tokens
+        :tokens => tokens,
+        :language => lang_pair[:language]
       }
     end
   end
@@ -73,7 +83,7 @@ module MessagesHelper
   end
 
   def get_reply_handler(msg)
-    m = "get_reply_for_" + msg.keyword
+    m = "get_reply_for_" + msg.keyword.to_s
     if respond_to?(m)
       return method(m)
     else
@@ -127,7 +137,6 @@ module MessagesHelper
   end
 
   def get_reply_for_help(msg)
-    "TODO"
   end
 
   def get_reply_for_welcome(msg)
@@ -139,7 +148,7 @@ module MessagesHelper
   end
 
   def t(key, params)
-    key
+    Mustache.render(I18n.t(key), params)
   end
 
   # def get_reply_for_plow(msg)

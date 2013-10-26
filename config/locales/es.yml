@@ -61,12 +61,7 @@ es:
     policeNearSavedAddress : |
         to {{savedAddress}}
     policeData: |
-    	Su estación‎ de policía más cercana está a {{stationAddress}}.
-# es el comisaría del distrito {{districtNumber}}
-# a {{stationAddress}}.
-# {{inCaseOfEmergency}}
-# {{differentAddress}}
-# {{directions}}
+        Su estación‎ de policía más cercana está a {{stationAddress}}.
     fireAddressPrompt : Text your address to find the closest fire station.
     fireNearSavedAddress : |
         a {{savedAddress}}
@@ -87,6 +82,3 @@ es:
         {{directions}}
     invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
     otherError: There was an error on our side. Sorry about that. Try again?
-
-
-

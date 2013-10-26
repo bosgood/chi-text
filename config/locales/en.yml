@@ -62,11 +62,6 @@ en:
         to {{savedAddress}}
     policeData: |
         The closest police station is {{stationAddress}}.
-# is the District {{districtNumber}}
-# Headquarters at {{stationAddress}}.
-# {{inCaseOfEmergency}}
-# {{differentAddress}}
-# {{directions}}
     fireAddressPrompt : Text your address to find the closest fire station.
     fireNearSavedAddress : |
         to {{savedAddress}}
@@ -87,6 +82,3 @@ en:
         {{directions}}
     invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
     otherError: There was an error on our side. Sorry about that. Try again?
-
-
-
