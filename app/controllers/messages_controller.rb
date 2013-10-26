@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def index
-    puts "piss"
+    puts TW.inspect
     puts params
   end
 end
