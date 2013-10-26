@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     end
   end
   def send body
-    TW.account.message.create({from: '+13126983244', to: params[:From], body: body})
+    TW.account.messages.create({from: '+13126983244', to: params[:From], body: body})
   end
 end
 
