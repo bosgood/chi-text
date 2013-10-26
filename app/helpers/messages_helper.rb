@@ -46,7 +46,8 @@ module MessagesHelper
     def get_message_params(body)
       delim = ' '
       tokens = body.split(delim)
-      keyword = tokens.pop
+      keyword = tokens.first
+      tokens = tokens[1..-1]
       # TODO translation here, turn into command keyword
       return {
         :keyword => keyword,
