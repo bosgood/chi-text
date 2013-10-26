@@ -44,6 +44,15 @@ body {
     color: #fff;
     font-family: 'Gotham Medium', Arial, sans-serif;
     font-weight: 900;
+
+    background: #7fceff; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #7fceff 0%, #047ac4 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7fceff), color-stop(100%,#047ac4)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #7fceff 0%,#047ac4 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #7fceff 0%,#047ac4 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #7fceff 0%,#047ac4 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #7fceff 0%,#047ac4 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7fceff', endColorstr='#047ac4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 h1 {
     font-size: 120px;
@@ -101,6 +110,7 @@ button, .big {
     padding: 10px;
     color: #047ac4;
     font-family: 'Gotham Medium', Arial, sans-serif;
+    border-radius:0;
 }
 
 button {
@@ -118,11 +128,4 @@ form
 {
     padding: 50px 0px;
     clear:both;
-}
-
-@media only screen
-and (max-device-width : 568px)
-{
-    
-
 }
