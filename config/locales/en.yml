@@ -22,7 +22,7 @@
 en:
     welcome: |
         Hi! Welcome to Chi-Text.
-        Text "help" for a list of commands.
+        Text "menu" for a list of commands.
         Digita "español" para cambiar el idioma.
     features: |
         Text "plow" to see if your street's been plowed,

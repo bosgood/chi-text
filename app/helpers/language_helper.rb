@@ -62,7 +62,7 @@ module LanguageHelper
     h['gripe'] = t_flu('es')
     h['flu'] = t_flu('en')
     h['shot'] = t_flu('en')
-    h['help'] = t_help('en')
+    h['menu'] = t_help('en')
     h['ayuda'] = t_help('es')
     h['informacion'] = t_help('es')
     h['information'] = t_help('en')
