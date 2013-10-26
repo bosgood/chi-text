@@ -1,5 +1,12 @@
 ChiText::Application.routes.draw do
   get "messages", to: 'messages#index'
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      post "messages/receive", to: 'messages#receive'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -40,7 +47,7 @@ ChiText::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

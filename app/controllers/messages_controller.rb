@@ -1,23 +1,7 @@
 class MessagesController < ApplicationController
-  include MessagesHelper
-  
   def index
-    binding.pry
-    return nil if params[:Body].nil? or params[:From].nil?
-    keyword = params[:Body].split(' ').first
-    if keyword == 'directions'
-      ds = DirectionsService.new
-      match = params[:Body].match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
-      send_message ds.get_step_by_step_directions(match[:start], match[:end]).join('*')
-    end
   end
-  
-  def send_message(body)
-    MessageService.send_message(params[:From], body)
-  end
-
 end
-
 
 
 =begin
