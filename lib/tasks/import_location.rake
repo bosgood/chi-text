@@ -20,6 +20,8 @@ namespace :db do
         loc = process_police_station(row)
       when 'city_office'
         loc = process_city_office(row)
+      when 'library'
+        loc = process_library(row)
       end
 
       unless loc.nil?
@@ -87,6 +89,9 @@ def process_city_office(row)
   #   :location_type => 'city_office'
   # })
   row
+end
+def process_library(row)
+  process_any(row)
 end
 
 def process_any(row)
