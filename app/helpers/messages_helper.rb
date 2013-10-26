@@ -140,16 +140,16 @@ module MessagesHelper
     else
       # TODO: need phone data
       # phone = closest_loc.phone
-      require 'pry'; binding.pry
       return t(msg.language, "policeData", { stationAddress: closest_loc.address })
     end
   end
 
   def get_reply_for_help(msg)
+    t(msg.language, 'features', {})
   end
 
   def get_reply_for_welcome(msg)
-    "Hi! Welcome to Chi-Text. Text \"help\" for a list of commands. Digita \"español\" para cambiar el idioma."
+    t(msg.language, 'welcome', {})
   end
 
   def get_reply_for_undefined(msg)
