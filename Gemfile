@@ -13,7 +13,7 @@ group :development, :test do
 end
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+gem 'sqlite3'
 
 gem 'pg'
 
