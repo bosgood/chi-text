@@ -27,12 +27,16 @@ font-family: 'Gotham Black';
     font-style: normal;
 }
 
+html, body {
+    height:100%
+}
 
 .wrapper {
     width: 800px;
     margin: 0 auto;
     text-align: center;
     background: #002E79;
+    min-height:100%
 }
 body {
     margin: 0;
@@ -45,10 +49,11 @@ h1 {
     font-size: 120px;
     text-transform: uppercase;
     margin: 0px;
-    padding: 50px 0px 0px;
+    padding: 25px 0px 0px;
     font-family: 'Gotham Black', Arial, sans-serif;
     letter-spacing: 16px;
     color: #fff;
+    text-indent: 15px;
 }
 h1 .star {
     font-family: "sans-serif";
