@@ -87,7 +87,7 @@ module MessagesHelper
 
   def closest_location(location_type, location)
     ClosestResourceService.closest_of_type(
-      location_type, location
+      location_type, location[0], location[1]
     )
   end
 
@@ -103,7 +103,12 @@ module MessagesHelper
       return nil
     end
 
-    closest_location(:police_station, loc)
+    closest_loc = closest_location(:police_station, loc)
+    if closest_loc.nil?
+      return nil
+    else
+      return closest_loc.address
+    end
   end
 
   # def get_reply_for_plow(msg)
