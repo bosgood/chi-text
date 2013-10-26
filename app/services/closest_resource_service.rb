@@ -27,7 +27,7 @@ class ClosestResourceService
     end
 
     def get_lat_lon_from_address(address)
-      nil
+      Geocoder.coordinates address
     end
   end
 end

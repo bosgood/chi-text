@@ -49,6 +49,7 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    geocoder (1.1.8)
     google_directions (0.1.5)
       extlib (>= 0.9.15)
       nokogiri (>= 1.4.1)
@@ -158,6 +159,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   figaro
+  geocoder
   google_directions
   jbuilder (~> 1.2)
   jquery-rails

@@ -14,6 +14,8 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem "geocoder"
+
 gem 'rails_12factor', group: :production
 
 gem 'pg'
