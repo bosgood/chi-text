@@ -1,4 +1,61 @@
 module MessagesHelper
+  class Message
+    def initialize(body, from)
+      @body = body
+      @params = get_message_params(body)
+      @from = from
+    end
+
+    def body
+      @body
+    end
+
+    def keyword
+      @params[:keyword]
+    end
+
+    def rest
+      @params[:rest]
+    end
+
+    def tokens
+      @params[:tokens]
+    end
+
+    def location
+      stored_loc = get_current_location(@from)
+
+      unless stored_loc.nil?
+        return stored_loc
+      end
+
+      # No location on file, attempt to parse "rest" as their address
+      ClosestResourceService.get_lat_lon_from_address(rest)
+    end
+
+    protected
+
+    # Helper method to get the location from their subscriber info
+    def get_current_location(from)
+      subscriber = Subscriber.where(:phone_number => from).take
+      return nil if subscriber.nil?
+      return subscriber.address
+    end
+
+    # Parses a text message to get a keyword and "rest"
+    def get_message_params(body)
+      delim = ' '
+      tokens = body.split(delim)
+      keyword = tokens.pop
+      # TODO translation here, turn into command keyword
+      return {
+        :keyword => keyword,
+        :rest => tokens.join(delim),
+        :tokens => tokens
+      }
+    end
+  end
+
   def paginate_message(body)
     return [body] if body.length <= 160
     messages = []
