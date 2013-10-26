@@ -1,5 +1,6 @@
 module MessagesHelper
   class Message
+    include LanguageHelper
     def initialize(body, from)
       @body = body
       @params = get_message_params(body)
@@ -8,6 +9,10 @@ module MessagesHelper
 
     def body
       @body
+    end
+
+    def language
+      @params[:language]
     end
 
     def keyword
@@ -42,17 +47,22 @@ module MessagesHelper
       return subscriber.address
     end
 
+    def get_lang_pair(raw_keyword)
+      t_(raw_keyword)
+    end
+
     # Parses a text message to get a keyword and "rest"
     def get_message_params(body)
       delim = ' '
       tokens = body.split(delim)
-      keyword = tokens.first.downcase
+      lang_pair = get_lang_pair(tokens.first.downcase)
+      keyword = lang_pair[:operation]
       tokens = tokens[1..-1]
-      # TODO translation here, turn into command keyword
       return {
         :keyword => keyword,
         :rest => tokens.join(delim),
-        :tokens => tokens
+        :tokens => tokens,
+        :language => lang_pair[:language]
       }
     end
   end
@@ -73,7 +83,7 @@ module MessagesHelper
   end
 
   def get_reply_handler(msg)
-    m = "get_reply_for_" + msg.keyword
+    m = "get_reply_for_" + msg.keyword.to_s
     if respond_to?(m)
       return method(m)
     else
@@ -98,7 +108,7 @@ module MessagesHelper
   def get_reply_for_directions(msg)
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
-      return t("Couldn't find directions, sorry!", {})
+      return t(msg.language, "Couldn't find directions, sorry!", {})
     end
 
     ds = DirectionsService.new
@@ -110,7 +120,16 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t("Closest flu clinic: #{closest_loc.address}", {})
+      return t(msg.language, "Closest flu clinic: #{closest_loc.address}", {})
+    end
+  end
+
+  def get_reply_for_fire(msg)
+    closest_loc = closest_location(:fire_station, msg)
+    if closest_loc.nil?
+      return nil
+    else
+      return t(msg.language, "Closest fire station: #{closest_loc.address}", {})
     end
   end
 
@@ -119,15 +138,14 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      # TODO: need localization here
       # TODO: need phone data
       # phone = closest_loc.phone
-      return t("Closest police station: #{closest_loc.address}", {})
+      require 'pry'; binding.pry
+      return t(msg.language, "policeData", { stationAddress: closest_loc.address })
     end
   end
 
   def get_reply_for_help(msg)
-    "TODO"
   end
 
   def get_reply_for_welcome(msg)
@@ -138,8 +156,9 @@ module MessagesHelper
     "We did not recognize that input please try again"
   end
 
-  def t(key, params)
-    key
+  def t(lang, key, params)
+    I18n.locale = lang
+    Mustache.render(I18n.t(key), params)
   end
 
   # def get_reply_for_plow(msg)
