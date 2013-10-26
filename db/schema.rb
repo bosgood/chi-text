@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026054310) do
+ActiveRecord::Schema.define(version: 20131026064416) do
 
   create_table "locations", force: true do |t|
     t.string  "district"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20131026054310) do
     t.string  "location"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.string  "location_type"
   end
 
 end
