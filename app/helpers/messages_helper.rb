@@ -46,7 +46,7 @@ module MessagesHelper
     def get_message_params(body)
       delim = ' '
       tokens = body.split(delim)
-      keyword = tokens.first
+      keyword = tokens.first.downcase
       tokens = tokens[1..-1]
       # TODO translation here, turn into command keyword
       return {
