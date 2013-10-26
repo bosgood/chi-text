@@ -9,10 +9,10 @@ class MessagesController < ApplicationController
       send_message ds.get_step_by_step_directions(match[:start], match[:end]).join('*')
     end
   end
-  def send_message body
-    TW.account.messages.create({from: '+13126983244', to: params[:From], body: body})
+  
+  def send_message(body)
+    MessageService.send_message(params[:From], body)
   end
-
 end
 
 
