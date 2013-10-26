@@ -6,12 +6,13 @@ class MessagesController < ApplicationController
     if keyword == 'directions'
       ds = DirectionsService.new
       match = params[:Body].match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
-      send ds.get_step_by_step_directions(match[:start], match[:end])
+      send_message ds.get_step_by_step_directions(match[:start], match[:end]).join('*')
     end
   end
-  def send body
+  def send_message body
     TW.account.messages.create({from: '+13126983244', to: params[:From], body: body})
   end
+
 end
 
 
