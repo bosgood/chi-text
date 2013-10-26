@@ -61,12 +61,12 @@ es:
     policeNearSavedAddress : |
         to {{savedAddress}}
     policeData: |
-        The closest police station {{policeNearSavedAddress}} 
-        is the District {{districtNumber}} 
-        Headquarters at {{stationAddress}}. 
-        {{inCaseOfEmergency}}
-        {{differentAddress}} 
-        {{directions}} 
+    	Su estación‎ de policía más cercana {{policeNearSavedAddress}}
+    	es el comisaría del distrito {{districtNumber}} 
+    	a {{stationAddress}}. 
+    	{{inCaseOfEmergency}}
+    	{{differentAddress}} 
+        {{directions}}
     fireAddressPrompt : Text your address to find the closest fire station.
     fireNearSavedAddress : |
         a {{savedAddress}} 
