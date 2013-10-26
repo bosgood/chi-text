@@ -6,4 +6,5 @@ $ ->
   $('#welcome_form').submit (event) ->
     event.preventDefault()
     $.post('/api/v1/messages/receive', {"From": $('#phone_num').val(), "Body": "welcome"} )
+    $('#phone_num').val('')
     return false
