@@ -48,16 +48,19 @@ module MessagesHelper
     end
 
     def get_lang_pair(raw_keyword)
-      t_(raw_keyword)
+      t_(raw_keyword) 
     end
 
     # Parses a text message to get a keyword and "rest"
     def get_message_params(body)
       delim = ' '
       tokens = body.split(delim)
-      lang_pair = get_lang_pair(tokens.first.downcase)
+      token = tokens.first 
+      token = '' if token.nil?
+      lang_pair = get_lang_pair(token.downcase) 
       keyword = lang_pair[:operation]
       tokens = tokens[1..-1]
+      tokens = [] if tokens.nil?
       return {
         :keyword => keyword,
         :rest => tokens.join(delim),
@@ -167,6 +170,7 @@ module MessagesHelper
   def t(lang, key, params)
     I18n.locale = lang
     Mustache.render(I18n.t(key), params)
+    I18n.locale = 'en'
   end
 
   # def get_reply_for_plow(msg)

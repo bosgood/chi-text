@@ -48,8 +48,19 @@ module LanguageHelper
     }
   end
 
+  def t_welcome(lang)
+    {
+      :operation => :welcome,
+      :language => lang
+    }
+  end
+
   def t_(key)
+    if key.nil? or key == ''
+      key = 'welcome'
+    end
     h = {}
+    h['welcome'] = t_welcome('en')
     h['fire'] = t_fire('en')
     h['bombero'] = t_fire('es')
     h['bomberos'] = t_fire('es')
