@@ -1,10 +1,12 @@
 require 'nokogiri'
+require 'net/http'
+require 'uri'
 
 namespace :db do
-  task :import_location_csv, [:csv_path, :location_type] => :environment do |t, args|
-    puts "processing data file: #{args.csv_path}, type: #{args.location_type}"
+  task :import_location_csv, [:csv_url, :location_type] => :environment do |t, args|
+    puts "processing data file: #{args.csv_url}, type: #{args.location_type}"
     num_records = 0
-    xml = open(args.csv_path)
+    xml = Net::HTTP.get(URI.parse(args.csv_url))
     doc = Nokogiri::XML(xml)
     rows = doc.css('row > row')
     
