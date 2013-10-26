@@ -25,10 +25,8 @@ en:
         Text "menu" for a list of commands.
         Digita "español" para cambiar el idioma.
     features: |
-        Text "plow" to see if your street's been plowed,
-        "flu" to find a free flu shot,
-        "library", "police" or "fire"
-        to find a library, police or fire station.
+        Text "police" or "fire" to find a police or fire station.
+        Text "directions start ADDRESS end ADDRESS" to get directions.
     differentAddress : Text "other" to use a different address.
     directions : Text "directions" for directions.
     noPlowing : The city of Chicago snowplows are not plowing today.
