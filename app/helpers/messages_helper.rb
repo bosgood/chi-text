@@ -108,7 +108,7 @@ module MessagesHelper
   def get_reply_for_directions(msg)
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
-      return t(msg.language, "Couldn't find directions, sorry!", {})
+      return t(msg.language, 'invalidAddress', {})
     end
 
     ds = DirectionsService.new
@@ -120,7 +120,11 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t(msg.language, "Closest flu clinic: #{closest_loc.address}", {})
+      return t(
+        msg.language,
+        'fluData',
+        { nearSavedAddress: closest_loc.address }
+      )
     end
   end
 
@@ -129,7 +133,11 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t(msg.language, "Closest fire station: #{closest_loc.address}", {})
+      return t(
+        msg.language,
+        'fireData',
+        { fireNearSavedAddress: closest_loc.address }
+      )
     end
   end
 
@@ -140,20 +148,20 @@ module MessagesHelper
     else
       # TODO: need phone data
       # phone = closest_loc.phone
-      require 'pry'; binding.pry
       return t(msg.language, "policeData", { stationAddress: closest_loc.address })
     end
   end
 
   def get_reply_for_help(msg)
+    t(msg.language, 'features', {})
   end
 
   def get_reply_for_welcome(msg)
-    "Hi! Welcome to Chi-Text. Text \"help\" for a list of commands. Digita \"español\" para cambiar el idioma."
+    t(msg.language, 'welcome', {})
   end
 
   def get_reply_for_undefined(msg)
-    "We did not recognize that input please try again"
+    "We did not recognize that input, please try again"
   end
 
   def t(lang, key, params)
