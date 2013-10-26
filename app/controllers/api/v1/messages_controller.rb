@@ -9,8 +9,10 @@ module Api
         body = params[:Body]
         from = params[:From]
         return nil if body.nil? or from.nil?
-        replier = get_reply_handler(get_message_keyword(body))
-        message = replier.call(body, from)
+
+        msg = Message.new(body, from)
+        replier = get_reply_handler(msg)
+        message = replier.call(msg)
         @sms_resp = send_message from, message
         render text: @sms_resp
       end
