@@ -1,5 +1,6 @@
 class ClosestResourceService
   class << self
+    include LocationHelper
     def closest_of_type(location_type, latitude, longitude)
       locations = Location.where(location_type: location_type)
       if locations.length == 0
@@ -11,7 +12,7 @@ class ClosestResourceService
       
       # Brute force search for the closest location (!)
       locations.each do |loc|
-        distance = LocationHelper.distance(
+        distance = distance(
           latitude.to_f, longitude.to_f, loc.latitude.to_f, loc.longitude.to_f
         )
         
