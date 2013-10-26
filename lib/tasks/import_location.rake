@@ -21,12 +21,12 @@ namespace :db do
       end
 
       unless loc.nil?
-        loc.merge({
+        loc.merge!({
           :location_type => args.location_type
         })
         loc = Location.new(loc)
         puts "(#{loc.latitude}, #{loc.longitude})"
-        # loc.save
+        loc.save
       end
     end
 
