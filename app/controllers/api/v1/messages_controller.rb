@@ -1,8 +1,8 @@
 module Api
   module V1
     class MessagesController < ApplicationController
-      skip_before_filter  :verify_authenticity_token
-      protect_from_forgery with: :null_session
+      #skip_before_filter  :verify_authenticity_token
+      #protect_from_forgery with: :null_session
       include MessagesHelper
 
       def receive
@@ -11,10 +11,7 @@ module Api
         replier = get_reply_handler(get_message_keyword(body))
         message = replier.call(body)
         @sms_resp = send_message params[:From], message
-        @test = {
-          :id => 12345
-        }
-
+        render text: @sms_resp
         # render :json
         # respond_to do |format|
         #   format.json { render :json => {:id => 'asdf'} }

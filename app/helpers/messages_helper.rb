@@ -21,8 +21,9 @@ module MessagesHelper
   end
 
   def get_reply_handler(keyword)
-    if respond_to?(keyword)
-      return method("get_reply_for_#{keyword}")
+    m = "get_reply_for_" + keyword
+    if respond_to?(m)
+      return method(m)
     else
       return nil
     end
@@ -34,6 +35,7 @@ module MessagesHelper
 
   def get_reply_for_directions(body)
     match = body.match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
+    ds = DirectionsService.new
     ds.get_step_by_step_directions(match[:start], match[:end]).join('*')
   end
 
