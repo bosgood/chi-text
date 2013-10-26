@@ -64,12 +64,7 @@ en:
     fireNearSavedAddress : |
         to {{savedAddress}}
     fireData : |
-        The closest fire station {{fireNearSavedAddress}}
-        is the Engine {{engineNumber}} Fire Station
-        at {{fireAddress}}.
-        {{inCaseOfEmergency}}
-        {{differentAddress}}
-        {{directions}}
+        The closest fire station is at {{fireNearSavedAddress}}.
     libraryAddressPrompt: Text your address to find the closest library.
     libraryNearSavedAddress : |
         to {{savedAddress}}
