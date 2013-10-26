@@ -6,6 +6,7 @@ module Api
       include MessagesHelper
 
       def receive
+        puts "[RECEIVED]: #{params.inspect}"
         body = params[:Body]
         from = params[:From]
         return nil if body.nil? or from.nil?
@@ -14,7 +15,7 @@ module Api
         replier = get_reply_handler(msg)
         message = replier.call(msg)
         @sms_resp = send_message from, message
-        render text: @sms_resp
+        render text: @sms_resp.inspect
       end
     end
   end

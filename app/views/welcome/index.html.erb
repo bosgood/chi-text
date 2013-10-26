@@ -15,16 +15,164 @@
 
 		<div class="commands">
 			<h3>Features</h3>
-			<p>PLOW + address</p>
 			<p>FLU + address</p>
 			<p>POLICE + address</p>
 			<p>FIRE + address</p>
 			<p>LIBRARY + address</p>
+			<p>DIRECTIONS START + (start address) + END + (end address)</p>
 		</div>
 
 		<div>
 			<h3>About</h3>
-<p>The Chi-Text team is Kennedy Collins, Brad Osgood, Kurt Rudolph, and Graham Troyer-Joy.</p>
+<p>The Chi-Text team is Kennedy Collins, Brad Osgood, Kurt Rudolph, and Graham Troyer-Joy. 
+
+
+<%= 
+
+wholeText = "policia 1553 humboldt park drive"
+
+def fire(lang)
+	{
+		:operation => :fire,
+		:lang => lang
+	}
+end
+
+def police(lang)
+	{
+		:operation => :police,
+		:lang => lang
+	}
+end
+def library(lang)
+	{
+		:operation => :library,
+		:lang => lang
+	}
+end
+def flu(lang)
+	{
+		:operation => :flu,
+		:lang => lang
+	}
+end
+def language(lang)
+	{
+		:operation => :language,
+		:lang => lang
+	}
+end
+def help(lang)
+	{
+		:operation => :help,
+		:lang => lang
+	}
+end
+
+@h = { 
+		:fire => fire('en'),
+		:bombero => fire('es'),
+		:bomberos => fire('es'),
+		:fuego => fire('es'),
+		:police => police('en'),
+		:policía => police('es'),
+		:policia => police('es'),
+		:library => library('en'),
+		:biblioteca => library('es'),
+		:gripe => flu('es'),
+		:flu => flu('en'),
+		:shot => flu('en'),
+		:help => help('en'),
+		:ayuda => help('es'),
+		:informacion => help('es'),
+		:information => help('en'),
+		:info => help('en'),
+		:idioma => language('es'),
+		:language => language('en'),
+		:espanol => language('es'),
+		:español => language('es')
+	}
+
+
+def whatLanguage(variable)
+	return @h[variable.downcase.to_sym][:lang]
+end
+
+def whatOperation(variable)
+   return @h[variable.downcase.to_sym][:operation]
+end
+
+
+I18n.locale = whatLanguage(wholeText.split[0]) 
+
+
+
+if whatOperation(wholeText.split[0]) == :fire
+
+	inCaseOfEmergency = t :inCaseOfEmergency
+	differentAddress = t :differentAddress
+	directions = t :directions
+
+	savedAddress = false
+
+	if savedAddress
+		mustachetemplateForFireNearSavedAddress = Mustache.new
+		mustachetemplateForFireNearSavedAddress.template = t :fireNearSavedAddress
+		mustachetemplateForFireNearSavedAddress[:savedAddress] = savedAddress
+		fireNearSavedAddress = view.render
+	end
+
+
+	view = Mustache.new
+	view.template = t :fireData
+	if fireNearSavedAddress
+		view[:fireNearSavedAddress] = fireNearSavedAddress
+	end
+	view[:engineNumber] = '12'
+	view[:fireAddress] = '123 main st'
+	if inCaseOfEmergency
+		view[:inCaseOfEmergency] = inCaseOfEmergency
+	end
+	if savedAddress
+		view[:differentAddress] = differentAddress
+	end
+	view[:directions] = directions
+	view.render
+elsif whatOperation(wholeText.split[0]) == :police
+
+	inCaseOfEmergency = t :inCaseOfEmergency
+	differentAddress = t :differentAddress
+	directions = t :directions
+
+	savedAddress = false
+
+	if savedAddress
+		mustachetemplateForPoliceNearSavedAddress = Mustache.new
+		mustachetemplateForPoliceNearSavedAddress.template = t :policeNearSavedAddress
+		mustachetemplateForPoliceNearSavedAddress[:savedAddress] = savedAddress
+		policeNearSavedAddress = view.render
+	end
+
+
+	view = Mustache.new
+	view.template = t :policeData
+	if policeNearSavedAddress
+		view[:policeNearSavedAddress] = policeNearSavedAddress
+	end
+	view[:districtNumber] = '12'
+	view[:stationAddress] = '123 main st!'
+	if inCaseOfEmergency
+		view[:inCaseOfEmergency] = inCaseOfEmergency
+	end
+	if savedAddress
+		view[:differentAddress] = differentAddress
+	end
+	view[:directions] = directions
+	view.render
+end
+
+%>
+</p>
 		</div>
 	</div>
 
