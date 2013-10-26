@@ -89,8 +89,8 @@ end
 
 def process_any(row)
   location = row.css('location')
-  lat = location.first[:latitude].to_d
-  lon = location.first[:longitude].to_d
+  lat = location.first[:latitude].to_f
+  lon = location.first[:longitude].to_f
   return {
     :address => v(row, 'address'),
     :state => v(row, 'state'),
