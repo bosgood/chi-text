@@ -8,7 +8,7 @@ class DirectionsService
     :mode => :driving,
   }
 
-  def initialize(options)
+  def initialize(options = {})
     @options = @@default_options.merge options
   end
 
@@ -36,7 +36,7 @@ class DirectionsService
   def self.test
     ds = DirectionsService.new
     ds.directions_to(
-      '300 W Adams St  Chicago, IL 60606',
+      '300 W Adams St Chicago, IL 60606',
       'W Merchandise Mart Plaza, Chicago IL 60654'
     )
   end
