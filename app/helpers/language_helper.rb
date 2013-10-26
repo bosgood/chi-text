@@ -41,6 +41,13 @@ module LanguageHelper
     }
   end
 
+  def t_directions(lang)
+    {
+      :operation => :directions,
+      :language => lang
+    }
+  end
+
   def t_(key)
     h = {}
     h['fire'] = t_fire('en')
@@ -64,8 +71,8 @@ module LanguageHelper
     h['language'] = t_language('en')
     h['espanol'] = t_language('es')
     h['español'] = t_language('es')
-    h['directions'] = t_language('en')
-    h['direcciónes'] = t_language('es')
+    h['directions'] = t_directions('en')
+    h['direcciónes'] = t_directions('es')
 
     h[key]
   end

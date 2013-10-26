@@ -82,3 +82,5 @@ es:
         {{directions}}
     invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
     otherError: There was an error on our side. Sorry about that. Try again?
+    unrecognizedInput: |
+        We didn't recognize that input.

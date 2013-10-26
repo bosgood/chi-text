@@ -161,7 +161,7 @@ module MessagesHelper
   end
 
   def get_reply_for_undefined(msg)
-    "We did not recognize that input, please try again"
+    t(msg.language, 'unrecognizedInput', {})
   end
 
   def t(lang, key, params)
