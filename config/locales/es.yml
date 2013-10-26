@@ -24,8 +24,7 @@ es:
         Hola! Bienvenido a Chi-Text.
         Digita "ayuda" para para una lista de comandos.
         Text “English” to switch the language.
-    features: |
-        Digita  "gripe" para conseguir una vacuna gratis. 
+    features: | 
         Digita "biblioteca", "policía" o "bomberos"
         para encontrar una biblioteca o estación‎ de policía o bomberos.
     differentAddress : digita "otra" para usar una dirección diferente.
