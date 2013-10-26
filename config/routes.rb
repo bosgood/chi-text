@@ -4,6 +4,7 @@ ChiText::Application.routes.draw do
   namespace :api  do
     namespace :v1 do
       post "messages/receive", to: 'messages#receive'
+      resource :subscribers
     end
   end
 

@@ -7,15 +7,12 @@ module Api
 
       def receive
         body = params[:Body]
-        return nil if body.nil? or params[:From].nil?
+        from = params[:From]
+        return nil if body.nil? or from.nil?
         replier = get_reply_handler(get_message_keyword(body))
-        message = replier.call(body)
-        @sms_resp = send_message params[:From], message
+        message = replier.call(body, from)
+        @sms_resp = send_message from, message
         render text: @sms_resp
-        # render :json
-        # respond_to do |format|
-        #   format.json { render :json => {:id => 'asdf'} }
-        # end
       end
     end
   end
