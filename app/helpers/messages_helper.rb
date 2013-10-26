@@ -108,7 +108,7 @@ module MessagesHelper
   def get_reply_for_directions(msg)
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
-      return t(msg.language, "Couldn't find directions, sorry!", {})
+      return t(msg.language, 'invalidAddress', {})
     end
 
     ds = DirectionsService.new
@@ -120,7 +120,11 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t(msg.language, "Closest flu clinic: #{closest_loc.address}", {})
+      return t(
+        msg.language,
+        'fluData',
+        { nearSavedAddress: closest_loc.address }
+      )
     end
   end
 
@@ -129,7 +133,11 @@ module MessagesHelper
     if closest_loc.nil?
       return nil
     else
-      return t(msg.language, "Closest fire station: #{closest_loc.address}", {})
+      return t(
+        msg.language,
+        'fireData',
+        { fireNearSavedAddress: closest_loc.address }
+      )
     end
   end
 
@@ -153,7 +161,7 @@ module MessagesHelper
   end
 
   def get_reply_for_undefined(msg)
-    "We did not recognize that input please try again"
+    "We did not recognize that input, please try again"
   end
 
   def t(lang, key, params)
