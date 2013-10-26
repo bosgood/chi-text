@@ -92,7 +92,6 @@ module MessagesHelper
   end
 
   def get_reply_for_directions(msg)
-    require 'pry'; binding.pry
     match = msg.body.match(/.*start(?<start>.+)end(?<end>.+)/)
     if match.nil?
       return "Couldn't find directions, sorry!"
