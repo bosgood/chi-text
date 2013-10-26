@@ -49,7 +49,7 @@ h1 {
     font-size: 120px;
     text-transform: uppercase;
     margin: 0px;
-    padding: 25px 0px 0px;
+    padding: 50px 0px 0px;
     font-family: 'Gotham Black', Arial, sans-serif;
     letter-spacing: 16px;
     color: #fff;
@@ -63,7 +63,6 @@ h1 .star {
 h2 {
     font-size: 48px;
     color: #54beec;
-    width: 400px;
     display: block;
     margin: 0 auto;
 }
@@ -73,6 +72,7 @@ h2 span {
     font-size: 20px;
     letter-spacing: 4px;
     color: #429bd3;
+    margin: 0px 200px;
 }
 .column-container {
     clear: both;
@@ -111,11 +111,18 @@ button {
 }
 
 .big {
-    width: 200px;
+    width: 203px;
 }
 
 form
 {
     padding: 50px 0px;
     clear:both;
+}
+
+@media only screen
+and (max-device-width : 568px)
+{
+    
+
 }
