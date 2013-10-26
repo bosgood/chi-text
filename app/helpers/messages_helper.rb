@@ -121,7 +121,7 @@ module MessagesHelper
   def get_reply_for_flu(msg)
     closest_loc = closest_location(:flu_clinic, msg)
     if closest_loc.nil?
-      return nil
+      return t(msg.language, 'invalidAddress', {})
     else
       return t(
         msg.language,
@@ -134,7 +134,7 @@ module MessagesHelper
   def get_reply_for_fire(msg)
     closest_loc = closest_location(:fire_station, msg)
     if closest_loc.nil?
-      return nil
+      return t(msg.language, 'invalidAddress', {})
     else
       return t(
         msg.language,
@@ -147,11 +147,24 @@ module MessagesHelper
   def get_reply_for_police(msg)
     closest_loc = closest_location(:police_station, msg)
     if closest_loc.nil?
-      return nil
+      return t(msg.language, 'invalidAddress', {})
     else
       # TODO: need phone data
       # phone = closest_loc.phone
       return t(msg.language, "policeData", { stationAddress: closest_loc.address })
+    end
+  end
+
+  def get_reply_for_library(msg)
+    closest_loc = closest_location(:library, msg)
+    if closest_loc.nil?
+      return t(msg.language, 'invalidAddress', {})
+    else
+      return t(
+        msg.language,
+        'libraryData',
+        { libraryNearSavedAddress: closest_loc.address }
+      )
     end
   end
 
