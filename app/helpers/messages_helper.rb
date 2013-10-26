@@ -71,14 +71,8 @@ module MessagesHelper
     MessageService.send_message(from, body)
   end
 
-  def get_message_keyword(body)
-    keyword = body.split(' ').first
-    # TODO translation here, turn into command keyword
-    keyword
-  end
-
-  def get_reply_handler(keyword)
-    m = "get_reply_for_" + keyword
+  def get_reply_handler(msg)
+    m = "get_reply_for_" + msg.keyword
     if respond_to?(m)
       return method(m)
     else
@@ -90,13 +84,24 @@ module MessagesHelper
   # Message handlers are defined here as "get_reply_for_#{keyword}"
   #
 
-  def get_reply_for_directions(body)
-    match = body.match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
+  def closest_location(body, location_type)
+    ClosestResourceService.closest_of_type(
+      location_type,
+    )
+  end
+
+  def get_reply_for_directions(msg, from)
+    match = msg.body.match(/.*start\:(?<start>.+)end\:(?<end>.+)/)
     ds = DirectionsService.new
     ds.get_step_by_step_directions(match[:start], match[:end]).join(' * ')
   end
 
-
-  def get_reply_for_plow
+  def get_reply_for_police(msg)
+    closest_location(
+      :police_station, msg.from, msg.rest
+    )
   end
+
+  # def get_reply_for_plow(msg)
+  # end
 end
