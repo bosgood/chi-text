@@ -9,6 +9,7 @@ gem 'figaro'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry-debugger'
 end
 
 # Use sqlite3 as the database for Active Record
@@ -36,6 +37,8 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+gem 'google_directions'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
