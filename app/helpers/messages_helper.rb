@@ -77,7 +77,7 @@ module MessagesHelper
     if respond_to?(m)
       return method(m)
     else
-      return nil
+      return method("get_reply_for_undefined")
     end
   end
 
@@ -112,6 +112,18 @@ module MessagesHelper
       # phone = closest_loc.phone
       return "Closest police station: #{closest_loc.address}"
     end
+  end
+
+  def get_reply_for_help(msg)
+    "TODO"
+  end
+
+  def get_reply_for_welcome(msg)
+    "Hi! Welcome to Chi-Text. Text \"help\" for a list of commands. Digita \"español\" para cambiar el idioma."
+  end
+
+  def get_reply_for_undefined(msg)
+    "We did not recognize that input please try again"
   end
 
   # def get_reply_for_plow(msg)
