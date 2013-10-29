@@ -1,5 +1,2 @@
-
-api_key = ENV['GOOGLE_API_KEY']
-unless api_key.nil?
-  Geocoder.configure( :api_key => api_key)
-end
+bing_api_key = ENV['BING_MAPS_API_KEY']
+Geocoder.configure( :lookup => :bing, api_key: bing_api_key ) unless bing_api_key.nil?
