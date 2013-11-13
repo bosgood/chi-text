@@ -12,19 +12,19 @@ module MessagesHelper
     end
 
     def language
-      @params[:language]
+      @params.nil? ? nil : @params[:language]
     end
 
     def keyword
-      @params[:keyword]
+      @params.nil? ? nil : @params[:keyword]
     end
 
     def rest
-      @params[:rest]
+      @params.nil? ? nil : @params[:rest]
     end
 
     def tokens
-      @params[:tokens]
+      @params.nil? ? nil : @params[:tokens]
     end
 
     def location
@@ -57,8 +57,13 @@ module MessagesHelper
       tokens = body.split(delim)
       token = tokens.first
       token = '' if token.nil?
+
       lang_pair = get_lang_pair(token.downcase)
+      return nil if lang_pair.nil?
+
       keyword = lang_pair[:operation]
+      return nil if keyword.nil?
+
       tokens = tokens[1..-1]
       tokens = [] if tokens.nil?
       return {
