@@ -30,9 +30,11 @@ namespace :db do
         loc.merge!({
           :location_type => args.location_type
         })
-        loc = Location.new(loc)
-        puts "(#{loc.latitude}, #{loc.longitude})"
-        loc.save
+        if Location.find_by(loc).nil?
+          loc = Location.new(loc)
+          puts "(#{loc.latitude}, #{loc.longitude})"
+          loc.save
+        end
       end
     end
 
