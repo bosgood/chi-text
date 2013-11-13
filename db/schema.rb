@@ -13,6 +13,19 @@
 
 ActiveRecord::Schema.define(version: 20131026181520) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "assets", force: true do |t|
+    t.integer  "object_id"
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assets", ["object_id"], name: "index_assets_on_object_id", using: :btree
+
   create_table "locations", force: true do |t|
     t.string  "district"
     t.string  "address"
@@ -24,6 +37,15 @@ ActiveRecord::Schema.define(version: 20131026181520) do
     t.float   "latitude"
     t.float   "longitude"
     t.string  "location_type"
+  end
+
+  create_table "route_points", force: true do |t|
+    t.integer  "object_id"
+    t.datetime "posting_time"
+    t.decimal  "x"
+    t.decimal  "y"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscribers", force: true do |t|
