@@ -12,6 +12,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 gem "geocoder"
