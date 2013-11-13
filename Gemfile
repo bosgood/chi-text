@@ -13,6 +13,8 @@ group :development, :test do
   gem 'pry-debugger'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 gem "geocoder"
