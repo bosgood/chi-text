@@ -60,6 +60,7 @@ module LanguageHelper
       key = 'welcome'
     end
     h = {}
+    h['欢迎'] = t_welcome('zh-cn')
     h['welcome'] = t_welcome('en')
     h['fire'] = t_fire('en')
     h['bombero'] = t_fire('es')

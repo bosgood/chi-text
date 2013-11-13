@@ -1,0 +1,76 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+zh-cn:
+    welcome: |
+        您好，欢迎使用chi-text。
+        为了查看命令力表，发“菜单”。
+        Text “English” to switch the language.
+    features: |
+        Text "police" or "fire" to find a police or fire station.
+        Text "directions start ADDRESS end ADDRESS" to get directions.
+    differentAddress : Text "other" to use a different address.
+    directions : Text "directions" for directions.
+    noPlowing : The city of Chicago snowplows are not plowing today.
+    plowing : The City of Chicago snowplows are plowing today.
+    plowAddressPrompt:  |
+        {{plowingOrNot}} Text your address to find out it's been plowed yet.
+    plowHas : has
+    plowHasNot : has not
+    plowData: |
+        The plow {{hasOrHasNot}} come to {{address}} as of {{time}}.
+    fluAddressPrompt : Text your address to find out where to get a free flu shot.
+    fluNearSavedAddress : |
+        near {{saved}}
+    fluData : |
+        You can get a free flu shot {{nearSavedAddress}}
+        on {{dayOfWeek}} at {{locationName}}
+        from {{timePeriod}} at {{fluAddress}}.
+        {{differentAddress}}
+        {{directions}}
+    dayOfWeekMonday : Monday
+    dayOfWeekTuesday : Tuesday
+    dayOfWeekWednesday : Wednesday
+    dayOfWeekThursday : Thursday
+    dayOfWeekFriday : Friday
+    dayOfWeekSaturday : Saturday
+    dayOfWeekSunday : Sunday
+    inCaseOfEmergency: |
+        If this is an emergency, please dial 911.
+    policeAddressPrompt : Text your address to find the closest police station.
+    policeNearSavedAddress : |
+        to {{savedAddress}}
+    policeData: |
+        The closest police station is {{stationAddress}}.
+    fireAddressPrompt : Text your address to find the closest fire station.
+    fireNearSavedAddress : |
+        to {{savedAddress}}
+    fireData : |
+        The closest fire station is at {{fireNearSavedAddress}}.
+    libraryAddressPrompt: Text your address to find the closest library.
+    libraryNearSavedAddress : |
+        to {{savedAddress}}
+    libraryData: |
+        The closest library is at {{libraryNearSavedAddress}}.
+    invalidAddress: That address wasn't found. Please try again with a valid address in the City of Chicago.
+    otherError: There was an error on our side. Sorry about that. Try again?
+    unrecognizedInput: |
+        We didn't recognize that input.
