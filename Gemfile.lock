@@ -37,6 +37,9 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     columnize (0.3.6)
+    cta-api (1.0.1)
+      hashie (>= 2.0.0)
+      httparty (>= 0.10.2)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -53,6 +56,7 @@ GEM
     google_directions (0.1.5)
       extlib (>= 0.9.15)
       nokogiri (>= 1.4.1)
+    hashie (2.0.5)
     hike (1.2.3)
     httparty (0.12.0)
       json (~> 1.8)
@@ -159,6 +163,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  cta-api
   figaro
   geocoder
   google_directions

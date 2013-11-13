@@ -16,6 +16,8 @@ end
 
 gem "geocoder"
 
+gem "cta-api"
+
 
 gem 'rails_12factor', group: :production
 
