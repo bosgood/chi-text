@@ -12,6 +12,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-debugger'
   gem 'sqlite3'
+end
+
+group :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'vcr'
   gem 'webmock'
