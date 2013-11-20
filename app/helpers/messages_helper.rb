@@ -138,8 +138,8 @@ module MessagesHelper
         msg.language,
         'fluData',
         {
-          fluAddress: closest_loc.address,
-          beginDate: closest_loc.begin_date,
+          locationAddress: closest_loc.address,
+          beginDate: Date.parse(closest_loc.begin_date).strftime('%b %e'),
           locationName: closest_loc.facility_name,
           openTime: closest_loc.begin_time,
           closeTime: closest_loc.end_time

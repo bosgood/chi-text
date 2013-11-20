@@ -42,8 +42,9 @@ en:
         near {{saved}}
     fluData : |
         You can get a free flu shot starting on
-        {{beginDate}} at {{locationName}} from
-        {{openTime}} at {{fluAddress}}.
+        {{beginDate}} at the {{locationName}}
+        ({{locationAddress}}) from
+        {{openTime}} to {{closeTime}}.
     dayOfWeekMonday : Monday
     dayOfWeekTuesday : Tuesday
     dayOfWeekWednesday : Wednesday
