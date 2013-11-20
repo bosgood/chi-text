@@ -26,7 +26,6 @@ class CityDataService
 
       resp = http.request(request)
       if resp.code.to_i != 200
-        require 'pry'; binding.pry
         raise APIError.new('unable to load chicago data', uri, resp)
       end
 
