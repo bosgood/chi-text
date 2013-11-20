@@ -7,23 +7,7 @@ class ClosestResourceService
         return nil
       end
 
-      nearest = nil
-      nearest_distance = -1
-
-      # Brute force search for the closest location (!)
-      locations.each do |loc|
-        distance = distance(
-          latitude.to_f, longitude.to_f, loc.latitude.to_f, loc.longitude.to_f
-        )
-
-        # Is first location or found closer location
-        if nearest.nil? or nearest_distance > distance
-          nearest = loc
-          nearest_distance = distance
-        end
-      end
-
-      nearest
+      closest(Loc.new(latitude, longitude), locations)
     end
 
     def get_lat_lon_from_address(address)
