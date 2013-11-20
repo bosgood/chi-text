@@ -2,42 +2,61 @@ require 'nokogiri'
 require 'net/http'
 require 'uri'
 
+
 namespace :db do
   task :import_location_csv, [:csv_url, :location_type] => :environment do |t, args|
-    puts "processing data file: #{args.csv_url}, type: #{args.location_type}"
-    num_records = 0
-    xml = Net::HTTP.get(URI.parse(args.csv_url))
-    doc = Nokogiri::XML(xml)
-    rows = doc.css('row > row')
+    import_location_csv(args.csv_url, args.location_type)
+  end
+  task :import_locations => :environment do
+    import_list =
+    [ ['https://data.cityofchicago.org/api/views/z8bn-74gv/rows.xml?accessType=DOWNLOAD', 'police_station'],
+      ['https://data.cityofchicago.org/api/views/28km-gtjn/rows.xml?accessType=DOWNLOAD', 'fire_station'],
+      ['https://data.cityofchicago.org/api/views/htai-wnw4/rows.xml?accessType=DOWNLOAD', 'city_office'],
+      ['https://data.cityofchicago.org/api/views/x8fc-8rcq/rows.xml?accessType=DOWNLOAD', 'library'],
+      ['https://data.cityofchicago.org/api/views/g5vx-5vqf/rows.xml?accessType=DOWNLOAD', 'flu_clinic']]
 
-    rows.each do |row|
-      num_records = num_records + 1
-      loc = nil
-      case args.location_type
-      when 'fire_station'
-        loc = process_fire_station(row)
-      when 'police_station'
-        loc = process_police_station(row)
-      when 'city_office'
-        loc = process_city_office(row)
-      when 'library'
-        loc = process_library(row)
-      when 'flu_clinic'
-        loc = process_flu_clinic(row)
-      end
+    import_list.each do |i|
+      import_location_csv( i[0], i[1])
+    end
+  end
+end
 
-      unless loc.nil?
-        loc.merge!({
-          :location_type => args.location_type
-        })
+def import_location_csv csv_url, location_type
+  puts "processing data file: #{csv_url}, type: #{location_type}"
+  num_records = 0
+  xml = Net::HTTP.get(URI.parse(csv_url))
+  doc = Nokogiri::XML(xml)
+  rows = doc.css('row > row')
+
+  rows.each do |row|
+    num_records = num_records + 1
+    loc = nil
+    case location_type
+    when 'fire_station'
+      loc = process_fire_station(row)
+    when 'police_station'
+      loc = process_police_station(row)
+    when 'city_office'
+      loc = process_city_office(row)
+    when 'library'
+      loc = process_library(row)
+    when 'flu_clinic'
+      loc = process_flu_clinic(row)
+    end
+
+    unless loc.nil?
+      loc.merge!({
+        :location_type => location_type
+      })
+      if Location.find_by(loc).nil?
         loc = Location.new(loc)
         puts "(#{loc.latitude}, #{loc.longitude})"
         loc.save
       end
     end
-
-    puts "processed #{num_records} records."
   end
+
+  puts "processed #{num_records} records."
 end
 
 def process_flu_clinic(row)
