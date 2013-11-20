@@ -16,7 +16,23 @@ namespace :db do
       ['https://data.cityofchicago.org/api/views/g5vx-5vqf/rows.xml?accessType=DOWNLOAD', 'flu_clinic']]
 
     import_list.each do |i|
-      import_location_csv( i[0], i[1])
+      import_location_csv(i[0], i[1])
+    end
+    import_cta_train_data
+  end
+end
+
+def import_cta_train_data
+  CTA::TrainTracker.key = ENV['CTA_TRAIN_API_KEY']
+  
+  CTA::TrainTracker.stop_table.each do |stop|
+    atrs = { latitude: stop["LAT"],
+      longitude: stop["LON"],
+      location_type: "CTA_Train",
+      location: stop["STATION_NAME"]
+    }
+    if Location.find_by(atrs).nil?
+      Location.create(atrs)
     end
   end
 end
