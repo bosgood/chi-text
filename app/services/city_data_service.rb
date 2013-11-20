@@ -50,4 +50,23 @@ class CityDataService
       make_data_request('flu-shot-clinic-locations-2013.json')
     end
   end
+
+  class Clinic
+    attr_reader :address, :phone, :facility_name, :facility_type, :begin_time, :end_time, :begin_date, :zip, :state, :city, :longitude, :latitude
+
+    def initialize(json)
+      @address = json["street1"]
+      @phone = json["phone"]
+      @facility_name = json["facility_name"]
+      @begin_time = json["begin_time"]
+      @end_time = json["end_time"]
+      @zip = json["postal_code"]
+      @state = json["state"]
+      @facility_type = json["facility_type"]
+      @begin_date = json["begin_date"]
+      @longitude = json["longitude"].to_f
+      @latitude = json["latitude"].to_f
+      @city = json["city"]
+    end
+  end
 end

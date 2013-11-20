@@ -1,4 +1,6 @@
 module MessagesHelper
+  include LocationHelper
+
   class Message
     include LanguageHelper
     def initialize(body, from)
@@ -124,14 +126,24 @@ module MessagesHelper
   end
 
   def get_reply_for_flu(msg)
-    closest_loc = closest_location(:flu_clinic, msg)
+    clinics = CityDataService.get_flu_shot_locations.map do |location|
+      CityDataService::Clinic.new(location)
+    end
+
+    closest_loc = closest(Loc.from_pair(msg.location), clinics)
     if closest_loc.nil?
       return t(msg.language, 'invalidAddress', {})
     else
       return t(
         msg.language,
         'fluData',
-        { nearSavedAddress: closest_loc.address }
+        {
+          fluAddress: closest_loc.address,
+          beginDate: closest_loc.begin_date,
+          locationName: closest_loc.facility_name,
+          openTime: closest_loc.begin_time,
+          closeTime: closest_loc.end_time
+        }
       )
     end
   end

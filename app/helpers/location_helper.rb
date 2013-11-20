@@ -60,6 +60,10 @@ end
 
 # Simple latitude/longitude pair, can substitute a Location model
 class Loc
+  def self.from_pair(pair)
+    Loc.new(pair[0], pair[1])
+  end
+
   attr_reader :latitude, :longitude
   def initialize(lat, lon)
     @latitude = lat.to_f

@@ -41,11 +41,9 @@ en:
     fluNearSavedAddress : |
         near {{saved}}
     fluData : |
-        You can get a free flu shot {{nearSavedAddress}}
-        on {{dayOfWeek}} at {{locationName}}
-        from {{timePeriod}} at {{fluAddress}}.
-        {{differentAddress}}
-        {{directions}}
+        You can get a free flu shot starting on
+        {{beginDate}} at {{locationName}} from
+        {{openTime}} at {{fluAddress}}.
     dayOfWeekMonday : Monday
     dayOfWeekTuesday : Tuesday
     dayOfWeekWednesday : Wednesday
